@@ -1,6 +1,7 @@
 package guru.springframework.petclinicdata.model;
 
-class PetType {
+class PetType extends BaseEntity {
+
     private String name;
 
     public String getName() {
@@ -10,6 +11,5 @@ class PetType {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
 }
