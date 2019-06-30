@@ -9,18 +9,22 @@ public class Pet extends BaseEntity {
     private LocalDate birthDate;
 
     public PetType getPetType() {
+        System.out.println("Pet - getPetType");
         return petType;
     }
 
     public void setPetType(PetType petType) {
+        System.out.println("Pet - setPetType");
         this.petType = petType;
     }
 
     public Owner getOwner() {
+        System.out.println("Pet - getOwner");
         return owner;
     }
 
     public void setOwner(Owner owner) {
+        System.out.println("Pet - setOwner");
         this.owner = owner;
     }
 

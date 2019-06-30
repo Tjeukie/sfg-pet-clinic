@@ -9,28 +9,34 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
+   
     @Override
     public Set<Pet> findAll() {
+        System.out.println("PetServiceMap - findAll");     
         return super.findAll();
     }
 
     @Override
     public Pet findById(Long id) {
+        System.out.println("PetServiceMap - findById"); 
         return super.findById(id);
     }
 
     @Override
     public Pet save(Pet object) {
+        System.out.println("PetServiceMap - save"); 
         return super.save(object.getId(), object);
     }
 
     @Override
     public void delete(Pet object) {
+        System.out.println("PetServiceMap - delete"); 
         super.delete(object);
     }
 
     @Override
     public void deleteById(Long id) {
+        System.out.println("PetServiceMap - deleteById"); 
         super.deleteById(id);
     }
 

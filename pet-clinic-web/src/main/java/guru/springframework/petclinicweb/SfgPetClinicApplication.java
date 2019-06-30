@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class SfgPetClinicApplication {
 
     public static void main(String[] args) {
+        System.out.println("SfgPetClinicApplication - main");
         SpringApplication.run(SfgPetClinicApplication.class, args);
     }
 

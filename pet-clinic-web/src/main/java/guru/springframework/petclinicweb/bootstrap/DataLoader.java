@@ -15,12 +15,14 @@ public class DataLoader implements CommandLineRunner {
 
     //No @Autowired required since Spring 4.
     public DataLoader(OwnerService ownerService, VetService vetService) {
+        System.out.println("DataLoader - <constructor>");
         this.ownerService = ownerService;
         this.vetService = vetService;
     }
     
     @Override
     public void run(String... args) throws Exception {
+        System.out.println("DataLoader - run");
         Owner owner1 = new Owner();
         owner1.setId(1L);
         owner1.setFirstName("Michael");

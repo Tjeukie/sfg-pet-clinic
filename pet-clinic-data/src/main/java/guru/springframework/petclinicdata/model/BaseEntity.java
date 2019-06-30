@@ -8,10 +8,12 @@ public class BaseEntity implements Serializable {
     private Long id;
 
     public Long getId() {
+        System.out.println("BaseEntity - getId");
         return id;
     }
 
     public void setId(Long id) {
+        System.out.println("BaseEntity - setId");
         this.id = id;
     }
     

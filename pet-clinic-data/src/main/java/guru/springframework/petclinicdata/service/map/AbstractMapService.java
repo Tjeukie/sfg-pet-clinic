@@ -10,23 +10,28 @@ public abstract class AbstractMapService<T, ID> {
     protected Map<ID, T> map = new HashMap<>();
 
     Set<T> findAll() {
+        System.out.println("AbstractMapService - findAll");
         return new HashSet<>(map.values());
     }
 
     T findById(ID id) {
+        System.out.println("AbstractMapService - findById");
         return map.get(id);
     }
 
     T save(ID id, T object) {
+        System.out.println("AbstractMapService - save");
         map.put(id, object);
         return object;
     }
 
     void delete(T object) {
+        System.out.println("AbstractMapService - delete");
         map.entrySet().removeIf(entry -> entry.getValue().equals(object));
     }
 
     void deleteById(ID id) {
+        System.out.println("AbstractMapService - deleteById");
         map.remove(id);
     }
 }
