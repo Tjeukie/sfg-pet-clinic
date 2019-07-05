@@ -11,4 +11,11 @@ public class IndexController {
         System.out.println("IndexController - index");
         return "index";
     }
+    
+    @RequestMapping("/oups")
+    public String oupsHandler() {
+        System.out.println("IndexController - oupsHandler");
+        
+        return "notimplemented";
+    }
 }
