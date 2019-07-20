@@ -8,13 +8,7 @@ import java.util.Set;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VisitServiceMap extends AbstractMapService<Visit, Long> implements VisitService {
-
-    private final VisitService visitService;
-
-    public VisitServiceMap(VisitService visitService) {
-        this.visitService = visitService;
-    }
+public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
 
     @Override
     public Set<Visit> findAll() {

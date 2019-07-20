@@ -5,10 +5,12 @@ import guru.springframework.petclinicdata.model.Pet;
 import guru.springframework.petclinicdata.model.PetType;
 import guru.springframework.petclinicdata.model.Specialty;
 import guru.springframework.petclinicdata.model.Vet;
+import guru.springframework.petclinicdata.model.Visit;
 import guru.springframework.petclinicdata.service.OwnerService;
 import guru.springframework.petclinicdata.service.PetTypeService;
 import guru.springframework.petclinicdata.service.SpecialtyService;
 import guru.springframework.petclinicdata.service.VetService;
+import guru.springframework.petclinicdata.service.VisitService;
 
 import java.time.LocalDate;
 
@@ -22,14 +24,17 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
-    //No @Autowired required since Spring 4.
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    //No @Autowired required since Spring 4
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
+    
 
     @Override
     public void run(String... args) throws Exception {
@@ -96,6 +101,12 @@ public class DataLoader implements CommandLineRunner {
         owner2.getPets().add(fionasCat);
 
         ownerService.save(owner2);
+        
+        Visit catVisit = new Visit();
+        catVisit.setPet(fionasCat);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sneezy Kitty");
+        visitService.save(catVisit);
 
         System.out.println("Loaded Owners....");
 
