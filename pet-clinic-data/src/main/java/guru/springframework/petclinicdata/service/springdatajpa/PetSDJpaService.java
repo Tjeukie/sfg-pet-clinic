@@ -1,7 +1,6 @@
 package guru.springframework.petclinicdata.service.springdatajpa;
 
 import guru.springframework.petclinicdata.model.Pet;
-import guru.springframework.petclinicdata.model.PetType;
 import guru.springframework.petclinicdata.repository.PetRepository;
 import guru.springframework.petclinicdata.service.PetService;
 
@@ -20,7 +19,6 @@ public class PetSDJpaService implements PetService {
     public PetSDJpaService(PetRepository petRepository) {
         this.petRepository = petRepository;
     }
-
 
     @Override
     public Set<Pet> findAll() {
