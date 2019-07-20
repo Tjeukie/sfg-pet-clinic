@@ -1,6 +1,5 @@
 package guru.springframework.petclinicdata.service.springdatajpa;
 
-import guru.springframework.petclinicdata.model.PetType;
 import guru.springframework.petclinicdata.model.Specialty;
 import guru.springframework.petclinicdata.repository.SpecialtyRepository;
 import guru.springframework.petclinicdata.service.SpecialtyService;
