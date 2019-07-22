@@ -7,6 +7,7 @@ import guru.springframework.petclinicdata.repository.PetTypeRepository;
 import guru.springframework.petclinicdata.service.OwnerService;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.context.annotation.Profile;
@@ -21,6 +22,7 @@ public class OwnerSDJpaService implements OwnerService {
     private final PetTypeRepository petTypeRepository;
 
     public OwnerSDJpaService(OwnerRepository ownerRepository, PetRepository petRepository, PetTypeRepository petTypeRepository) {
+        System.out.println("OwnerSDJpaService - <constructor>");
         this.ownerRepository = ownerRepository;
         this.petRepository = petRepository;
         this.petTypeRepository = petTypeRepository;
@@ -56,6 +58,11 @@ public class OwnerSDJpaService implements OwnerService {
     @Override
     public void deleteById(Long id) {
         ownerRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Owner> findAllByLastNameLike(String lastName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

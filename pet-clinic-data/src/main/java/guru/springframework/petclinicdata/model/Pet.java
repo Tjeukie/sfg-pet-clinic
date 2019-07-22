@@ -11,6 +11,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "pets")
 public class Pet extends BaseEntity {
@@ -33,48 +44,5 @@ public class Pet extends BaseEntity {
     private Set<Visit> visits = new HashSet<>();
     
     
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public PetType getPetType() {
-        System.out.println("Pet - getPetType");
-        return petType;
-    }
-
-    public void setPetType(PetType petType) {
-        System.out.println("Pet - setPetType");
-        this.petType = petType;
-    }
-
-    public Owner getOwner() {
-        System.out.println("Pet - getOwner");
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        System.out.println("Pet - setOwner");
-        this.owner = owner;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Set<Visit> getVisits() {
-        return visits;
-    }
-
-    public void setVisits(Set<Visit> visits) {
-        this.visits = visits;
-    }
-
+    
 }

@@ -5,17 +5,20 @@ import guru.springframework.petclinicdata.model.Pet;
 import guru.springframework.petclinicdata.service.OwnerService;
 import guru.springframework.petclinicdata.service.PetService;
 import guru.springframework.petclinicdata.service.PetTypeService;
+import java.util.List;
 
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
+@Profile({"default", "map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
-    
+
     private final PetTypeService petTypeService;
     private final PetService petService;
-    
+
     public OwnerMapService(PetTypeService petTypeService, PetService petService) {
         System.out.println("OwnerServiceMap - <constructor>");
         this.petTypeService = petTypeService;
@@ -77,6 +80,11 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
     public Owner findByLastName(String lastName) {
         System.out.println("OwnerServiceMap - findByLastName");
         return null;
+    }
+
+    @Override
+    public List<Owner> findAllByLastNameLike(String lastName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -17,6 +17,7 @@ public class VisitSDJpaService implements VisitService {
     private final VisitRepository visitRepository;
 
     public VisitSDJpaService(VisitRepository visitRepository) {
+        System.out.println("VisitSDJpaService - <constructor>");
         this.visitRepository = visitRepository;
     }
 

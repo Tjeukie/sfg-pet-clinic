@@ -1,6 +1,5 @@
 package guru.springframework.petclinicdata.service.springdatajpa;
 
-import guru.springframework.petclinicdata.model.Owner;
 import guru.springframework.petclinicdata.model.Vet;
 import guru.springframework.petclinicdata.repository.SpecialtyRepository;
 import guru.springframework.petclinicdata.repository.VetRepository;
@@ -20,6 +19,7 @@ public class VetSDJpaService implements VetService {
     private final SpecialtyRepository specialtyRepository;
 
     public VetSDJpaService(VetRepository vetRepository, SpecialtyRepository specialtyRepository) {
+        System.out.println("VetSDJpaService - <constructor>");
         this.vetRepository = vetRepository;
         this.specialtyRepository = specialtyRepository;
     }

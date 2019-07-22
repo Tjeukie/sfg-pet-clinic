@@ -17,6 +17,7 @@ public class PetTypeSDJpaService implements PetTypeService {
     private final PetTypeRepository petTypeRepository;
 
     public PetTypeSDJpaService(PetTypeRepository petTypeRepository) {
+        System.out.println("PetTypeSDJpaService - <constructor>");
         this.petTypeRepository = petTypeRepository;
     }
 

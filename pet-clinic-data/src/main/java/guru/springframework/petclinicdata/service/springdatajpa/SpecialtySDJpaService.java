@@ -17,6 +17,7 @@ public class SpecialtySDJpaService implements SpecialtyService {
     private final SpecialtyRepository specialtyRepository;
 
     public SpecialtySDJpaService(SpecialtyRepository specialtyRepository) {
+        System.out.println("SpecialtySDJpaService - <constructor>");
         this.specialtyRepository = specialtyRepository;
     }
 
