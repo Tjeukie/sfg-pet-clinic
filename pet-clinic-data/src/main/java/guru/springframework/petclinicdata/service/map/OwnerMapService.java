@@ -24,23 +24,23 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
         this.petTypeService = petTypeService;
         this.petService = petService;
     }
-    
+
     @Override
     public Set<Owner> findAll() {
         System.out.println("OwnerServiceMap - findAll");
         return super.findAll();
     }
-    
+
     @Override
     public Owner findById(Long id) {
         System.out.println("OwnerServiceMap - findById");
         return super.findById(id);
     }
-    
+
     @Override
     public Owner save(Owner object) {
         System.out.println("OwnerServiceMap - save");
-        
+
         if (object != null) {
             if (object.getPets() != null) {
                 object.getPets().forEach(pet -> {
@@ -56,35 +56,40 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
                         pet.setId(savedPet.getId());
                     }
                 });
-                
+
             }
             return super.save(object);
         } else {
             return null;
         }
     }
-    
+
     @Override
     public void delete(Owner object) {
         System.out.println("OwnerServiceMap - delete");
         super.delete(object);
     }
-    
+
     @Override
     public void deleteById(Long id) {
         System.out.println("OwnerServiceMap - deleteById");
         super.deleteById(id);
     }
-    
+
     @Override
     public Owner findByLastName(String lastName) {
         System.out.println("OwnerServiceMap - findByLastName");
-        return null;
+
+        return this.findAll()
+                .stream()
+                .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public List<Owner> findAllByLastNameLike(String lastName) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
