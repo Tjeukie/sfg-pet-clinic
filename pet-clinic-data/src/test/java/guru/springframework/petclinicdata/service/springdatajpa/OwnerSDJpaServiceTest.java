@@ -4,27 +4,25 @@ import guru.springframework.petclinicdata.model.Owner;
 import guru.springframework.petclinicdata.repository.OwnerRepository;
 import guru.springframework.petclinicdata.repository.PetRepository;
 import guru.springframework.petclinicdata.repository.PetTypeRepository;
+
 import java.util.HashSet;
 import java.util.Optional;
+
 import java.util.Set;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import static org.mockito.ArgumentMatchers.any;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.mockito.ArgumentMatchers.anyLong;
-
+import org.junit.Test;
+import org.junit.Before;
+import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.MockitoAnnotations;
 
-@ExtendWith(MockitoExtension.class)
 public class OwnerSDJpaServiceTest {
 
     public static final String LAST_NAME = "Smith";
@@ -38,13 +36,16 @@ public class OwnerSDJpaServiceTest {
     @Mock
     PetTypeRepository petTypeRepository;
 
-    @InjectMocks
     OwnerSDJpaService ownerSDJpaService;
 
     Owner returnOwner;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+
+        ownerSDJpaService = new OwnerSDJpaService(ownerRepository, petRepository, petTypeRepository);
+        
         returnOwner = Owner.builder().id(1l).lastName(LAST_NAME).build();
     }
 
@@ -84,7 +85,7 @@ public class OwnerSDJpaServiceTest {
     }
 
    @Test
-    void testFindByIdNotFound() {
+    public void testFindByIdNotFound() {
         when(ownerRepository.findById(anyLong())).thenReturn(Optional.empty());
 
         Owner owner = ownerSDJpaService.findById(1L);
@@ -94,7 +95,7 @@ public class OwnerSDJpaServiceTest {
 
 
     @Test
-    void testSave() {
+    public void testSave() {
         Owner ownerToSave = Owner.builder().id(1L).build();
 
         when(ownerRepository.save(any())).thenReturn(returnOwner);
@@ -107,7 +108,7 @@ public class OwnerSDJpaServiceTest {
     }
 
     @Test
-    void testDelete() {
+    public void testDelete() {
         ownerSDJpaService.delete(returnOwner);
 
         //default is 1 times
@@ -115,7 +116,7 @@ public class OwnerSDJpaServiceTest {
     }
 
     @Test
-    void testDeleteById() {
+    public void testDeleteById() {
         ownerSDJpaService.deleteById(1L);
 
         verify(ownerRepository).deleteById(anyLong());
