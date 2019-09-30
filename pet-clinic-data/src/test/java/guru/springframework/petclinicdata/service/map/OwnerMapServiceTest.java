@@ -1,13 +1,13 @@
 package guru.springframework.petclinicdata.service.map;
 
 import guru.springframework.petclinicdata.model.Owner;
-import java.util.Set;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import org.junit.Test;
+import org.junit.Before;
 
 public class OwnerMapServiceTest {
 
@@ -16,8 +16,8 @@ public class OwnerMapServiceTest {
     final Long ownerId = 1L;
     final String lastName = "Smith";
 
-    @BeforeEach
-    public void setUp() {
+    @Before
+    public void setUp() throws Exception {
         ownerMapService = new OwnerMapService(new PetTypeMapService(), new PetMapService());
 
         ownerMapService.save(Owner.builder().id(ownerId).lastName(lastName).build());
