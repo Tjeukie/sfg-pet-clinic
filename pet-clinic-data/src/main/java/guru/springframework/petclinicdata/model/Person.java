@@ -1,25 +1,26 @@
 package guru.springframework.petclinicdata.model;
 
-public class Person {
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import lombok.AllArgsConstructor;
 
-    private String firstName;
-    private String lastName;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-    public String getFirstName() {
-        return firstName;
-    }
+//Tells JPA we're going to inherit from this class
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+//Tells JPA we're going to inherit from this class
+@MappedSuperclass
+public class Person extends BaseEntity {
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    //Hibernate uses 'snake-case'
+    @Column(name = "first_name")
+    String firstName;
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    
-    
+    @Column(name = "last_name")
+    String lastName;
 }
