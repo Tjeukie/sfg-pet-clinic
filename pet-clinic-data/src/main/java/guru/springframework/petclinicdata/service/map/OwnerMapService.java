@@ -78,13 +78,18 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
     
     @Override
     public Owner findByLastName(String lastName) {
-        System.out.println("OwnerServiceMap - findByLastName");
-        return null;
+        return this.findAll()
+                .stream()
+                .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public List<Owner> findAllByLastNameLike(String lastName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        //todo - impl
+        return null;
     }
     
 }
