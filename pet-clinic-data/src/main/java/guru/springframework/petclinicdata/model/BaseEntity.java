@@ -21,6 +21,5 @@ import lombok.Setter;
 public class BaseEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY
 }

@@ -29,11 +29,6 @@ public class OwnerSDJpaService implements OwnerService {
     }
 
     @Override
-    public Owner findByLastName(String lastName) {
-        return ownerRepository.findByLastName(lastName);
-    }
-
-    @Override
     public Set<Owner> findAll() {
         Set<Owner> owners = new HashSet<>();
         ownerRepository.findAll().forEach(owners::add);
@@ -59,10 +54,14 @@ public class OwnerSDJpaService implements OwnerService {
     public void deleteById(Long id) {
         ownerRepository.deleteById(id);
     }
+    
+    @Override
+    public Owner findByLastName(String lastName) {
+        return ownerRepository.findByLastName(lastName);
+    }
 
     @Override
     public List<Owner> findAllByLastNameLike(String lastName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ownerRepository.findAllByLastNameLike(lastName);
     }
-
 }
